@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <title>Make Requests!</title>
+    <style>
+        div {
+            margin-top: 25px;
+        }
+    </style>
+    <script>
+
+        window.onload = function() {
+            document.getElementById('button').addEventListener('click', function() {
+                var postReq = new XMLHttpRequest();
+                postReq.open('POST','/test');
+                postReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                postReq.onload = function() {
+                    document.getElementById('output').innerHTML += this.responseText;
+                };
+                var str = document.getElementById('input_value').value;
+                postReq.send(`text=${str}`);
+            });
+        }
+    </script>
+</head>
+
+<body>
+<input id="input_value" />
+<div><button id="button" class="btn-success btn btn-lg">POST1</button></div>
+
+<div id="output"></div>
+
+</body>
+</html>
