@@ -45,12 +45,12 @@ app.get('/', function (req, res) {
 
     var requestCount = () => {
         return isNaN(req.session.numberOfRequests) ? 0 : req.session.numberOfRequests;
-    }
+    };
 
     res.end('Number of reguests: ' + requestCount() +
         ' \n\r Refresh the page to increase count');
-})
+});
 
 app.listen(port, function () {
     console.log('app running on port ' + port);
-})
+});
